@@ -1,0 +1,17 @@
+# Optional: run n8n in Docker instead of `npm start`.
+# Data (DB, credentials) persists in the named volume.
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:1.123.43
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - GENERIC_TIMEZONE=Europe/Warsaw
+    volumes:
+      - n8n_data:/home/node/.n8n
+      # Mount repo so you can import the JSON from the UI or copy path into container
+      - ./:/workflows:ro
+volumes:
+  n8n_data:

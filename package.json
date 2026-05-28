@@ -1,0 +1,21 @@
+{
+  "name": "check-weather-workflow",
+  "private": true,
+  "description": "Local n8n runner for AI Agent weather workflow",
+  "scripts": {
+    "n8n": "cross-env N8N_USER_FOLDER=.n8n node scripts/run-n8n-with-env.mjs start",
+    "import-workflow": "cross-env N8N_USER_FOLDER=.n8n n8n import:workflow --input=\"./AI Agent workflow.json\"",
+    "start": "cross-env N8N_USER_FOLDER=.n8n node scripts/run-n8n-with-env.mjs start",
+    "setup": "npm run import-workflow"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "n8n": "1.123.43"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
