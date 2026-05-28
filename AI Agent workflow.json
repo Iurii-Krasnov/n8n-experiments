@@ -32,7 +32,8 @@
         64
       ],
       "id": "60241740-2b52-42e7-9586-1ad6c0132dda",
-      "name": "Transform data"
+      "name": "Transform data",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -85,7 +86,8 @@
         64
       ],
       "id": "b99a9447-c47f-44b2-942a-f6c1b60ab75c",
-      "name": "Has alert"
+      "name": "Has alert",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -191,7 +193,8 @@
           "id": "RuMoFlSqKSC3L4Uw",
           "name": "Google Sheets account 2"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -217,6 +220,7 @@
           "name": "Gmail account 2"
         }
       },
+      "onError": "continueErrorOutput",
       "notes": "Double-click to open"
     },
     {
@@ -386,11 +390,6 @@
             "node": "Append row in sheet",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Send alert to email",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -418,11 +417,11 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "2f78e3b2-4fd9-42f7-80ac-a5cf3c1eefd2",
+  "versionId": "f6e0e8a3-ef65-4b02-b1b4-c2905e1b9360",
   "meta": {
     "templateId": "ready-to-run-ai-workflow",
     "templateCredsSetupCompleted": true,
-    "instanceId": "cb3efc10345812390097d0aa8595f391a04937c7574ded25f0e274f3051ddd8a"
+    "instanceId": "3d15d2ab5b84eb1d74775b5c596a172192628ad64210b15f74aa8b4c77f66ff2"
   },
   "id": "gb7UrYo1lcE6vBoi",
   "tags": []

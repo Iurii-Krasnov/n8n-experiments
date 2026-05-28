@@ -1,0 +1,163 @@
+{
+  "name": "Error wokflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cd785dfc-0725-4030-917a-fb3f28933913",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "ik.agent.email@gmail.com",
+        "subject": "[n8n] Error occured",
+        "message": "={{ $json.name }}\n{{ $json.code }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "edc8f8b9-3082-4918-bf11-fc75837f5f33",
+      "name": "Send a message",
+      "webhookId": "3ab882fc-64c6-4e67-ba28-4e7ffb7c5c5c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "zFR1j6fWz7PPVK6x",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Z7vzmN3MGM47Z2XnALmMY5WL5oMb7fXsjvb_zv1ylCQ/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1336232897,
+          "mode": "list",
+          "cachedResultName": "Errors",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Z7vzmN3MGM47Z2XnALmMY5WL5oMb7fXsjvb_zv1ylCQ/edit#gid=1336232897"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "threadId",
+              "displayName": "threadId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "labelIds",
+              "displayName": "labelIds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "569bb06b-3d12-41f0-ad84-764fc03fc958",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Vj19qsyk8qAkOsJA",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      },
+      {
+        "json": {
+          "name": "Second item",
+          "code": 2
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "63376ead-8aaa-45a9-ad5d-8c5abe201624",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3d15d2ab5b84eb1d74775b5c596a172192628ad64210b15f74aa8b4c77f66ff2"
+  },
+  "id": "ODWT48b7OPisxHnV",
+  "tags": []
+}
